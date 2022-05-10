@@ -11,12 +11,23 @@ mod math {
 }
 
 mod misc {
-    pub fn in_vector<T>(t: &T, v: &Vec<T>) -> bool {
-        panic!("Method not implemented");
+    pub fn in_vector<T: std::cmp::PartialEq>(t: &T, v: &Vec<T>) -> bool {
+        //panic!("Method not implemented");
+        v.contains(t)
     }
 
-    pub fn is_sorted<T>(v: &Vec<T>) -> bool {
-        panic!("Method not implemented");
+    pub fn is_sorted<T: std::cmp::PartialOrd>(v: &Vec<T>) -> bool {
+        //panic!("Method not implemented");
+        if v.is_empty() {
+            panic!("Vec is empty!")
+        }
+        for i in 1..v.len() {
+            if v[i] < v[i - 1] {
+                return false;
+            }
+        }
+
+        true
     }
 }
 
